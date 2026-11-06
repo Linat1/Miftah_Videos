@@ -25,6 +25,7 @@ export type StoryLine = {
   shot?: Shot;
   focus?: CastName[]; // characters in a "two" shot
   events?: StoryEvent[];
+  tone?: string; // delivery note for whoever records the line
 };
 
 export type CastSpot = {

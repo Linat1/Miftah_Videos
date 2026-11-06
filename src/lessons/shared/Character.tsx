@@ -4,7 +4,7 @@ import { Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig }
 // The illustrated cast (transparent PNGs in public/characters/).
 // `faces` is the direction the drawing naturally looks.
 export const CAST = {
-  yusuf: { src: "characters/yusuf.png", w: 272, h: 1052, faces: "right", nameAr: "يُوسُفُ", nameEn: "Yusuf" },
+  yusuf: { src: "characters/yusuf.png", w: 272, h: 1052, faces: "left", nameAr: "يُوسُفُ", nameEn: "Yusuf" },
   maryam: { src: "characters/maryam.png", w: 411, h: 1003, faces: "left", nameAr: "مَرْيَمُ", nameEn: "Maryam" },
   waiter: { src: "characters/waiter.png", w: 325, h: 1060, faces: "left", nameAr: "النَّادِلُ", nameEn: "Waiter" },
   aisha: { src: "characters/aisha.png", w: 316, h: 1039, faces: "right", nameAr: "عَائِشَةُ", nameEn: "Aisha" },

@@ -165,7 +165,7 @@ scripts/
 recordings/d1-l02/       put your voice recordings here
 docs/
   D1-L02-narration-script.md        voice-over script for the explainer
-  D1-L02-story-voice-script.md      line-by-line recording script for the story
+  D1-L02-story-script.md      line-by-line recording script for the story
 remotion.config.ts       render settings
 ```
 
@@ -334,7 +334,7 @@ npm run render:d1-l02-story
 
 ### Recording the voices
 
-1. Open **`docs/D1-L02-story-voice-script.md`**. It lists every line with its file name (e.g. `s1-01`),
+1. Open **`docs/D1-L02-story-script.md`**. It lists every line with its file name (e.g. `s1-01`),
    speaker, Arabic, English and rough length.
 2. Record **one file per line** (your phone's voice recorder is fine). Name each file after its line id,
    e.g. `s1-01.m4a`, and put them all in **`recordings/d1-l02/`**.
