@@ -8,7 +8,8 @@ import { STAGE_DEFAULT, Stage3D, blendStage, type StageState } from "../shared/S
 import { SceneFade, En } from "../shared/ui";
 import type { SceneDef } from "../shared/scene";
 import { C } from "../shared/theme";
-import { intro, objectives, question } from "./scenes/opening";
+import { intro, objectives } from "./scenes/opening";
+import { askTime, cafe, training, goodbye } from "./scenes/characters";
 import { minutesPast, minutesTo, rulePast, ruleTo, mistake } from "./scenes/clockwork";
 import { h24, schedule, quiz, outro } from "./scenes/practice";
 import { LESSON } from "./content";
@@ -17,11 +18,11 @@ export const FPS = 30;
 const FADE = 15; // frames that neighbouring scenes overlap
 
 export const SCENES: SceneDef[] = [
-  intro, objectives, question,
+  intro, objectives, askTime,
   minutesPast, minutesTo, rulePast, ruleTo, mistake,
-  h24, schedule,
+  h24, schedule, cafe, training,
   ...quiz,
-  outro,
+  outro, goodbye,
 ];
 
 // When each scene starts (scenes overlap by FADE frames for smooth transitions)

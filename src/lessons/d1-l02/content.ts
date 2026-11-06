@@ -136,3 +136,31 @@ export const RECAP = [
   { ar: "إِلَّا", en: "minutes to: name the next hour", color: "to" as const },
   { ar: "يَبْدَأُ · يَنْتَهِي · يَسْتَمِرُّ مُدَّةَ", en: "begins · ends · lasts for", color: "gold" as const },
 ];
+
+// ---------- Character dialogues ----------
+// (Line timings are in frames at 30 fps, relative to the scene start.)
+import type { Line } from "../shared/Dialogue";
+
+export const DIALOGUE_ASK: Line[] = [
+  { who: "yusuf", at: 50, dur: 72, ar: "كَمِ السَّاعَةُ؟", en: "What time is it?" },
+  { who: "noor", at: 128, dur: 80, ar: "السَّاعَةُ الثَّامِنَةُ.", en: "It is eight o'clock." },
+];
+
+// Café dialogue (new for the video, using the lesson's structures)
+export const CAFE_BOARD = { name: "مَقْهَى مِفْتَاح", item: "الفُطُورُ", hours: "٧:٣٠ – ١٠:٣٠", en: "Breakfast 7:30 – 10:30" };
+export const DIALOGUE_CAFE: Line[] = [
+  { who: "maryam", at: 45, dur: 85, ar: "مَتَى يَبْدَأُ الفُطُورُ؟", en: "When does breakfast begin?" },
+  { who: "waiter", at: 135, dur: 115, ar: "يَبْدَأُ فِي السَّابِعَةِ وَالنِّصْفِ، وَيَنْتَهِي فِي العَاشِرَةِ وَالنِّصْفِ.", en: "It begins at 7:30 and ends at 10:30." },
+  { who: "maryam", at: 255, dur: 80, ar: "كَمِ السَّاعَةُ الآنَ؟", en: "What time is it now?" },
+  { who: "waiter", at: 340, dur: 85, ar: "السَّاعَةُ العَاشِرَةُ وَالرُّبْعُ.", en: "It is quarter past ten." },
+  { who: "maryam", at: 430, dur: 45, ar: "شُكْرًا!", en: "Thank you!" },
+];
+
+// Model exchange (from the lesson's speaking section)
+export const DIALOGUE_TRAINING: Line[] = [
+  { who: "aisha", at: 40, dur: 85, ar: "مَتَى يَبْدَأُ التَّمْرِينُ؟", en: "When does training begin?" },
+  { who: "yusuf", at: 130, dur: 150, ar: "يَبْدَأُ فِي السَّادِسَةِ إِلَّا الرُّبْعَ وَيَسْتَمِرُّ مُدَّةَ سَاعَةٍ وَالنِّصْفِ.", en: "It begins at quarter to six and lasts an hour and a half." },
+  { who: "yusuf", at: 285, dur: 150, ar: "أُفَضِّلُ هٰذَا الوَقْتَ لِأَنَّنِي أُنْهِي وَاجِبِي قَبْلَهُ.", en: "I prefer this time because I finish my homework before it." },
+];
+
+export const GOODBYE = { ar: "مَعَ السَّلَامَةِ", en: "Goodbye! See you in the next lesson." };

@@ -136,7 +136,9 @@ export const CaptionLayer: React.FC<CaptionLayerProps> = ({
       {pages.map((page, i) => {
         const next = pages[i + 1];
         const from = Math.round((page.startMs / 1000) * fps);
-        const ownEnd = page.startMs + page.durationMs + holdMs;
+        // durationMs can stretch to the next caption, so end at the last word instead
+        const lastWordEnd = page.tokens.length ? page.tokens[page.tokens.length - 1].toMs : page.startMs + page.durationMs;
+        const ownEnd = lastWordEnd + holdMs;
         const endMs = next ? Math.min(next.startMs, ownEnd) : ownEnd;
         const duration = Math.max(1, Math.round(((endMs - page.startMs) / 1000) * fps));
         return (

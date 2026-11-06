@@ -13,4 +13,6 @@ export type SceneDef = {
   Panel: React.FC;
   stage: (frame: number) => Partial<StageState>;
   narration: { at: number; text: string }[]; // `at` in seconds from scene start
+  /** Character lines (for the voice-over script). `at` in seconds. */
+  dialogue?: { at: number; who: string; ar: string; en: string }[];
 };

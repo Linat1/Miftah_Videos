@@ -33,6 +33,15 @@ That's it. FFmpeg comes bundled with Remotion, and the browser it renders with i
 
 ---
 
+## Where are my videos?
+
+Videos are **made from the code**. They aren't stored as files until you render them:
+
+- **Finished videos** I render for you are in the [`videos/`](videos/) folder of this repository.
+  Open one on GitHub and click **Download raw file**.
+- **To make one yourself**, run a render command (below). It's saved in the `out/` folder on your computer.
+  (`out/` is not uploaded to GitHub, which keeps the repository small.)
+
 ## 2. Everyday workflow
 
 ### Preview and edit (Remotion Studio)
@@ -212,7 +221,7 @@ npx remotion render Lesson1 out/lesson1.mp4
 
 ## 9. Lesson videos: D1-L02 · Telling the Time
 
-A 2:45 explainer built from the
+A 3:22 explainer built from the
 [D1-L02 lesson page](https://miftaharabiclessons.inkandpixels.uk/lessons/development/d1/lesson-02-telling-the-time.php).
 In the Studio it's called **`D1-L02-TellingTheTime`**.
 
@@ -220,15 +229,18 @@ In the Studio it's called **`D1-L02-TellingTheTime`**.
 |---|---|---|
 | 0:00 | Title | 3D clock winds to 8:00; Arabic + English title |
 | 0:06 | Objectives | The four "Today you will…" goals |
-| 0:16 | كَمِ السَّاعَةُ؟ | How to ask the time, and a model answer |
-| 0:21 | Minutes past (وَ) | Minute hand sweeps 7:05 → 7:30; a **green** wedge fills; vocabulary chips build up |
-| 0:36 | Minutes to (إِلَّا) | السَّابِعَةُ → الثَّامِنَةُ "next hour!" switch; 7:40 → 8:00 with an **orange** wedge |
-| 0:52 | Rule 1 & Rule 2 | Lesson formulas and examples (7:05, 9:15, 11:30 / 2:40, 5:45, 8:55) |
-| 1:14 | Common mistake | 5:45 ✗ الخَامِسَةُ إِلَّا الرُّبْعَ → ✓ السَّادِسَةُ إِلَّا الرُّبْعَ |
-| 1:23 | 24-hour time | Digital / conversational / 24-hour table, sun and moon, صَبَاحًا / مَسَاءً |
-| 1:37 | Start · finish · duration | يَبْدَأُ · يَنْتَهِي · يَسْتَمِرُّ مُدَّةَ with a timeline, 8:00–8:45 |
-| 1:51 | Quiz × 4 | 6:30, 3:45, 2:40, 10:50: three options, 5-second countdown, then the answer |
-| 2:33 | Close | Recap, next lesson, بِالْعِلْمِ نَفْتَحُ الْأَبْوَابَ with the golden key |
+| 0:16 | كَمِ السَّاعَةُ؟ | **Yusuf** asks **Noor** the time, under a wall clock |
+| 0:23 | Minutes past (وَ) | Minute hand sweeps 7:05 → 7:30; a **green** wedge fills; vocabulary chips build up |
+| 0:38 | Minutes to (إِلَّا) | السَّابِعَةُ → الثَّامِنَةُ "next hour!" switch; 7:40 → 8:00 with an **orange** wedge |
+| 0:54 | Rule 1 & Rule 2 | Lesson formulas and examples (7:05, 9:15, 11:30 / 2:40, 5:45, 8:55) |
+| 1:16 | Common mistake | 5:45 ✗ الخَامِسَةُ إِلَّا الرُّبْعَ → ✓ السَّادِسَةُ إِلَّا الرُّبْعَ |
+| 1:25 | 24-hour time | Digital / conversational / 24-hour table, sun and moon, صَبَاحًا / مَسَاءً |
+| 1:38 | Start · finish · duration | يَبْدَأُ · يَنْتَهِي · يَسْتَمِرُّ مُدَّةَ with a timeline, 8:00–8:45 |
+| 1:53 | Café | **Maryam** asks the **waiter** when breakfast begins and ends, and the time now |
+| 2:09 | Model exchange | **Aisha** asks مَتَى يَبْدَأُ التَّمْرِينُ؟; **Yusuf** answers (the clock runs 90 minutes) |
+| 2:24 | Quiz × 4 | 6:30, 3:45, 2:40, 10:50: three options, 5-second countdown, then the answer |
+| 3:06 | Close | Recap, next lesson, بِالْعِلْمِ نَفْتَحُ الْأَبْوَابَ with the golden key |
+| 3:16 | Goodbye | The whole cast hops and waves: مَعَ السَّلَامَةِ |
 
 Render it:
 
@@ -262,6 +274,25 @@ If you change any narration lines, regenerate the script:
 ```bash
 npm run script:d1-l02
 ```
+
+### The characters
+
+Your five illustrated characters live in `public/characters/` (transparent PNGs):
+
+| File | Name in the video | Natural facing |
+|---|---|---|
+| `yusuf.png` | Yusuf · يُوسُفُ | right |
+| `maryam.png` | Maryam · مَرْيَمُ | left |
+| `waiter.png` | Waiter · النَّادِلُ | left |
+| `aisha.png` | Aisha · عَائِشَةُ | right |
+| `noor.png` | Noor · نُورُ | right |
+
+To rename them, edit `CAST` in `src/lessons/shared/Character.tsx`. They're animated puppet-style: they walk in,
+breathe, bounce while they talk, hop when happy, and flip to face each other. To add a new character, drop a
+transparent PNG into `public/characters/` and add a line to `CAST`.
+
+Dialogue lines (who speaks, when, Arabic + English) are in `content.ts` under **Character dialogues**.
+Each `at` is a frame number (30 frames = 1 second).
 
 ### Making the next lesson video
 
