@@ -105,6 +105,15 @@ const sfx = {
     const tt = t < 0.18 ? t : t - 0.18;
     return (Math.sin(2 * Math.PI * f * t) + 0.3 * Math.sin(2 * Math.PI * f * 3 * t)) * Math.exp(-tt * 6) * Math.min(1, tt / 0.01);
   }),
+  // alarm-clock bell ring (fast hammer on two bells)
+  alarm: make(2.2, (t) => {
+    const hammer = Math.floor(t * 22) % 2 === 0 ? 1 : 0.55;
+    const env = Math.min(1, t / 0.01) * Math.min(1, (2.2 - t) / 0.3);
+    return (Math.sin(2 * Math.PI * 2350 * t) + 0.7 * Math.sin(2 * Math.PI * 3120 * t) + 0.3 * Math.sin(2 * Math.PI * 1180 * t)) *
+      hammer * env * (0.75 + 0.25 * Math.sin(2 * Math.PI * 22 * t));
+  }),
+  // cartoon pop for reactions (!, ?)
+  pop: make(0.25, (t) => Math.sin(2 * Math.PI * (300 + 900 * Math.min(1, t / 0.06)) * t) * Math.exp(-t * 18) * Math.min(1, t / 0.003)),
   // airy whoosh for transitions
   whoosh: (() => {
     let lp = 0;

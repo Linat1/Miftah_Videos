@@ -155,14 +155,17 @@ src/
     CaptionLayer.tsx      word-by-word caption display
   three/Clock3D.tsx       3D clock with Arabic-Indic numerals and past/to wedge
   lessons/
-    shared/               reusable lesson-video pieces (stage, cards, text, sfx)
-    d1-l02/               D1-L02 Telling the Time (content.ts + scenes/)
+    shared/               reusable pieces (3D stage, characters, sets, story engine, sfx)
+    d1-l02/               D1-L02 Telling the Time explainer (content.ts + scenes/)
+    d1-l02-story/         D1-L02 story episode (story.ts, voice-timing.json)
 scripts/
   transcribe.mjs          narration → captions (Whisper)
   make-lesson-audio.mjs   synthesises music + sound effects
   export-narration.tsx    writes the voice-over script for D1-L02
+recordings/d1-l02/       put your voice recordings here
 docs/
-  D1-L02-narration-script.md   timed voice-over script
+  D1-L02-narration-script.md        voice-over script for the explainer
+  D1-L02-story-voice-script.md      line-by-line recording script for the story
 remotion.config.ts       render settings
 ```
 
@@ -303,7 +306,70 @@ cards, Arabic text, sound effects, captions) is reusable. Music and sound effect
 
 ---
 
-## 10. Troubleshooting
+## 10. Story episode: D1-L02 · "Yusuf's Busy Wednesday"
+
+A cartoon-style story episode (16:9, ~2:45 before voices) where your characters **act out the lesson**.
+It's built on the lesson's Wednesday listening script, its model exchange and its common mistake.
+In the Studio it's called **`D1-L02-Story`**.
+
+| Part | Where | What happens |
+|---|---|---|
+| Title | | يَوْمُ الأَرْبِعَاءِ · Yusuf's Busy Wednesday |
+| Scene 1 | Bedroom, 7:30 a.m. | Maryam wakes Yusuf: school starts at 7:50, "Only twenty minutes!" He dashes off |
+| Tip 1 | 3D clock | Minutes past: keep the hour + وَ |
+| Scene 2 | School corridor, 7:45 | Yusuf says السَّابِعَةُ إِلَّا الرُّبْعَ (the common mistake!). Aisha corrects him |
+| Tip 2 | 3D clock | Minutes to: name the NEXT hour + إِلَّا |
+| Scene 3 | Classroom, 8:00 | Noor's Wednesday timetable: when the lesson ends, and how long the break lasts |
+| Tip 3 | 3D clock | يَبْدَأُ · يَنْتَهِي · يَسْتَمِرُّ مُدَّةَ |
+| Scene 4 | Café, 5:55 p.m. | The lesson's model exchange about training. It's already 5:55, and he's late again! |
+| Scene 5 | Home, 8:00 p.m. | "A long day!" Then "Tomorrow school starts at 7:30!" Yusuf faints |
+| Quiz × 3 | Classroom | Noor asks; 4-second countdown; the answer is revealed |
+| The end | | The whole cast, أَحْسَنْتُمْ! |
+
+Render it:
+
+```bash
+npm run render:d1-l02-story
+```
+
+### Recording the voices
+
+1. Open **`docs/D1-L02-story-voice-script.md`**. It lists every line with its file name (e.g. `s1-01`),
+   speaker, Arabic, English and rough length.
+2. Record **one file per line** (your phone's voice recorder is fine). Name each file after its line id,
+   e.g. `s1-01.m4a`, and put them all in **`recordings/d1-l02/`**.
+3. Run:
+
+   ```bash
+   npm run voices:d1-l02
+   ```
+
+   This trims the silence, evens out the volume, saves the voices into the project, and **re-times the whole
+   episode to your recordings**. Lines you haven't recorded yet keep the estimated timing.
+4. Preview in `npm run dev` (choose **D1-L02-Story**), then render.
+
+### Changing the story
+
+Everything is in **`src/lessons/d1-l02-story/story.ts`**: scenes, who stands where, every line
+(Arabic + English), the camera shot for each line (`wide`, `close`, `clock`, `two`), and reactions:
+
+- `emote`: `!`, `?`, `?!`, `zz` (sleepy) or `sweat`
+- `enter` / `exit`: walk or run on and off stage
+- `hop`: a happy jump · `faint`: a comedy fall
+- `sfx`: a sound effect
+
+The rooms are drawn in code in `src/lessons/shared/sets.tsx` (bedroom, corridor, classroom, café, living room),
+and the story engine in `src/lessons/shared/story/` works for any future episode.
+
+If you change any lines, regenerate the recording script:
+
+```bash
+npm run script:d1-l02-story
+```
+
+---
+
+## 11. Troubleshooting
 
 | Problem | Fix |
 |---|---|

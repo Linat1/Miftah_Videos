@@ -7,6 +7,7 @@ import {
   TellingTheTime,
   tellingTheTimeSchema,
 } from "./lessons/d1-l02/TellingTheTime";
+import { Episode, TIMELINE as D1L02_STORY, episodeSchema } from "./lessons/d1-l02-story/Episode";
 
 // Every <Composition> here shows up in the Studio sidebar and can be rendered.
 export const RemotionRoot: React.FC = () => {
@@ -65,6 +66,18 @@ export const RemotionRoot: React.FC = () => {
           showCaptions: true,
           musicVolume: 0.35,
         }}
+      />
+
+      {/* D1-L02 story episode: "Yusuf's Busy Wednesday" (characters + voices) */}
+      <Composition
+        id="D1-L02-Story"
+        component={Episode}
+        durationInFrames={D1L02_STORY.total}
+        fps={30}
+        width={1920}
+        height={1080}
+        schema={episodeSchema}
+        defaultProps={{ musicVolume: 0.22 }}
       />
     </>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import { Sequence, staticFile } from "remotion";
 import { Audio } from "@remotion/media";
 
-export type SfxName = "chime" | "tick" | "correct" | "wrong" | "whoosh";
+export type SfxName = "chime" | "tick" | "correct" | "wrong" | "whoosh" | "alarm" | "pop";
 
 /** Plays a short sound effect at a given frame (relative to the scene). */
 export const Sfx: React.FC<{ at: number; name: SfxName; volume?: number }> = ({

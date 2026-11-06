@@ -14,7 +14,10 @@
     "captions": "node scripts/transcribe.mjs",
     "render:d1-l02": "remotion render D1-L02-TellingTheTime out/D1-L02-telling-the-time.mp4",
     "audio:lesson": "node scripts/make-lesson-audio.mjs",
-    "script:d1-l02": "esbuild scripts/export-narration.tsx --bundle --platform=node --format=esm --packages=external --outfile=out/_export.mjs --log-level=error && node out/_export.mjs"
+    "script:d1-l02": "esbuild scripts/export-narration.tsx --bundle --platform=node --format=esm --packages=external --outfile=out/_export.mjs --log-level=error && node out/_export.mjs",
+    "voices:d1-l02": "node scripts/sync-voices.mjs d1-l02",
+    "script:d1-l02-story": "esbuild scripts/export-story-script.tsx --bundle --platform=node --format=esm --packages=external --loader:.json=json --outfile=out/_story.mjs --log-level=error && node out/_story.mjs",
+    "render:d1-l02-story": "remotion render D1-L02-Story out/D1-L02-story-busy-wednesday.mp4"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.9",
