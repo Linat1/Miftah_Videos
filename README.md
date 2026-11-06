@@ -144,8 +144,16 @@ src/
     KeyModel.tsx          the 3D key, built from simple shapes
   captions/
     CaptionLayer.tsx      word-by-word caption display
+  three/Clock3D.tsx       3D clock with Arabic-Indic numerals and past/to wedge
+  lessons/
+    shared/               reusable lesson-video pieces (stage, cards, text, sfx)
+    d1-l02/               D1-L02 Telling the Time (content.ts + scenes/)
 scripts/
   transcribe.mjs          narration → captions (Whisper)
+  make-lesson-audio.mjs   synthesises music + sound effects
+  export-narration.tsx    writes the voice-over script for D1-L02
+docs/
+  D1-L02-narration-script.md   timed voice-over script
 remotion.config.ts       render settings
 ```
 
@@ -202,7 +210,69 @@ npx remotion render Lesson1 out/lesson1.mp4
 
 ---
 
-## 9. Troubleshooting
+## 9. Lesson videos: D1-L02 · Telling the Time
+
+A 2:45 explainer built from the
+[D1-L02 lesson page](https://miftaharabiclessons.inkandpixels.uk/lessons/development/d1/lesson-02-telling-the-time.php).
+In the Studio it's called **`D1-L02-TellingTheTime`**.
+
+| Time | Scene | What happens |
+|---|---|---|
+| 0:00 | Title | 3D clock winds to 8:00; Arabic + English title |
+| 0:06 | Objectives | The four "Today you will…" goals |
+| 0:16 | كَمِ السَّاعَةُ؟ | How to ask the time, and a model answer |
+| 0:21 | Minutes past (وَ) | Minute hand sweeps 7:05 → 7:30; a **green** wedge fills; vocabulary chips build up |
+| 0:36 | Minutes to (إِلَّا) | السَّابِعَةُ → الثَّامِنَةُ "next hour!" switch; 7:40 → 8:00 with an **orange** wedge |
+| 0:52 | Rule 1 & Rule 2 | Lesson formulas and examples (7:05, 9:15, 11:30 / 2:40, 5:45, 8:55) |
+| 1:14 | Common mistake | 5:45 ✗ الخَامِسَةُ إِلَّا الرُّبْعَ → ✓ السَّادِسَةُ إِلَّا الرُّبْعَ |
+| 1:23 | 24-hour time | Digital / conversational / 24-hour table, sun and moon, صَبَاحًا / مَسَاءً |
+| 1:37 | Start · finish · duration | يَبْدَأُ · يَنْتَهِي · يَسْتَمِرُّ مُدَّةَ with a timeline, 8:00–8:45 |
+| 1:51 | Quiz × 4 | 6:30, 3:45, 2:40, 10:50: three options, 5-second countdown, then the answer |
+| 2:33 | Close | Recap, next lesson, بِالْعِلْمِ نَفْتَحُ الْأَبْوَابَ with the golden key |
+
+Render it:
+
+```bash
+npm run render:d1-l02
+```
+
+### Editing the words
+
+All on-screen Arabic and English is in **one file**: `src/lessons/d1-l02/content.ts`.
+Change it there and every scene updates. The narration/caption lines are at the bottom of each scene
+in `src/lessons/d1-l02/scenes/`.
+
+### Adding your own voice
+
+The video works as-is with music + on-screen captions. To add your voice:
+
+1. Open the script, `docs/D1-L02-narration-script.md`. It lists every line with its start time.
+2. Record yourself reading it (one take, following the times). Save it as `public/audio/d1-l02-narration.mp3`.
+3. In the Studio, set **narrationFile** to `audio/d1-l02-narration.mp3` (the music automatically gets quieter).
+4. Optional, for captions that match your voice exactly:
+
+   ```bash
+   npm run captions -- public/audio/d1-l02-narration.mp3
+   ```
+
+   Then set **captionsFile** to `captions/d1-l02-narration.json`.
+
+If you change any narration lines, regenerate the script:
+
+```bash
+npm run script:d1-l02
+```
+
+### Making the next lesson video
+
+Copy the folder `src/lessons/d1-l02` to e.g. `src/lessons/d1-l03`, edit `content.ts` and the scenes,
+and register it in `src/Root.tsx` like D1-L02. Everything in `src/lessons/shared/` (3D clock stage,
+cards, Arabic text, sound effects, captions) is reusable. Music and sound effects are synthesised by
+`npm run audio:lesson`, so they're royalty-free.
+
+---
+
+## 10. Troubleshooting
 
 | Problem | Fix |
 |---|---|

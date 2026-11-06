@@ -1,6 +1,12 @@
 import React from "react";
 import { Composition } from "remotion";
 import { MiftahIntro, miftahIntroSchema } from "./compositions/MiftahIntro";
+import {
+  FPS as D1L02_FPS,
+  TOTAL_FRAMES as D1L02_FRAMES,
+  TellingTheTime,
+  tellingTheTimeSchema,
+} from "./lessons/d1-l02/TellingTheTime";
 
 // Every <Composition> here shows up in the Studio sidebar and can be rendered.
 export const RemotionRoot: React.FC = () => {
@@ -41,6 +47,23 @@ export const RemotionRoot: React.FC = () => {
           audioFile: "audio/demo-music.mp3",
           keyColor: "#d4a64a",
           background: "#0b1d2e",
+        }}
+      />
+
+      {/* Lesson D1-L02 · Telling the Time (16:9 explainer) */}
+      <Composition
+        id="D1-L02-TellingTheTime"
+        component={TellingTheTime}
+        durationInFrames={D1L02_FRAMES}
+        fps={D1L02_FPS}
+        width={1920}
+        height={1080}
+        schema={tellingTheTimeSchema}
+        defaultProps={{
+          narrationFile: "",
+          captionsFile: "",
+          showCaptions: true,
+          musicVolume: 0.35,
         }}
       />
     </>

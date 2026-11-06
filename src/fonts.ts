@@ -11,7 +11,10 @@ export const TITLE_FONT = "Amiri";
 export const ARABIC_FONT = "Noto Naskh Arabic";
 export const LATIN_FONT = "Poppins";
 
-loadFont({ family: TITLE_FONT, url: staticFile("fonts/Amiri-Bold-arabic.woff2"), weight: "700", unicodeRange: ARABIC_RANGE });
-loadFont({ family: TITLE_FONT, url: staticFile("fonts/Amiri-Bold-latin.woff2"), weight: "700" , unicodeRange: "U+0000-00FF, U+2000-206F"});
-loadFont({ family: ARABIC_FONT, url: staticFile("fonts/NotoNaskhArabic-Bold.woff2"), weight: "700" });
-loadFont({ family: LATIN_FONT, url: staticFile("fonts/Poppins-Bold.woff2"), weight: "700" });
+// Fonts only load in the browser (Studio / rendering), not in Node scripts.
+if (typeof document !== "undefined") {
+  loadFont({ family: TITLE_FONT, url: staticFile("fonts/Amiri-Bold-arabic.woff2"), weight: "700", unicodeRange: ARABIC_RANGE });
+  loadFont({ family: TITLE_FONT, url: staticFile("fonts/Amiri-Bold-latin.woff2"), weight: "700", unicodeRange: "U+0000-00FF, U+2000-206F"});
+  loadFont({ family: ARABIC_FONT, url: staticFile("fonts/NotoNaskhArabic-Bold.woff2"), weight: "700" });
+  loadFont({ family: LATIN_FONT, url: staticFile("fonts/Poppins-Bold.woff2"), weight: "700" });
+}

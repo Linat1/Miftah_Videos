@@ -11,7 +11,10 @@
     "still": "remotion still MiftahIntro out/thumbnail.png --frame=90",
     "typecheck": "tsc --noEmit",
     "upgrade": "remotion upgrade",
-    "captions": "node scripts/transcribe.mjs"
+    "captions": "node scripts/transcribe.mjs",
+    "render:d1-l02": "remotion render D1-L02-TellingTheTime out/D1-L02-telling-the-time.mp4",
+    "audio:lesson": "node scripts/make-lesson-audio.mjs",
+    "script:d1-l02": "esbuild scripts/export-narration.tsx --bundle --platform=node --format=esm --packages=external --outfile=out/_export.mjs --log-level=error && node out/_export.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.9",
@@ -34,6 +37,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@types/three": "^0.187.0",
+    "esbuild": "^0.28.1",
     "typescript": "^5.9.3"
   }
 }

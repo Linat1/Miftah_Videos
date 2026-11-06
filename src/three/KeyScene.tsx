@@ -13,7 +13,7 @@ import { KeyModel } from "./KeyModel";
 // Never animate with useFrame() or clocks/timers. Always derive motion from
 // useCurrentFrame(), so every frame renders identically every time.
 
-const Particles: React.FC<{ color: string }> = ({ color }) => {
+export const Particles: React.FC<{ color: string }> = ({ color }) => {
   const frame = useCurrentFrame();
   // Deterministic "random" positions (same every render).
   const points = useMemo(
