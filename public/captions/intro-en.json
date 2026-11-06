@@ -1,0 +1,86 @@
+[
+  {
+    "text": "Welcome",
+    "startMs": 2000,
+    "endMs": 2400,
+    "timestampMs": 2200,
+    "confidence": 1
+  },
+  {
+    "text": " to",
+    "startMs": 2400,
+    "endMs": 2600,
+    "timestampMs": 2500,
+    "confidence": 1
+  },
+  {
+    "text": " Miftah.",
+    "startMs": 2600,
+    "endMs": 3300,
+    "timestampMs": 2950,
+    "confidence": 1
+  },
+  {
+    "text": " Every",
+    "startMs": 3800,
+    "endMs": 4150,
+    "timestampMs": 3975,
+    "confidence": 1
+  },
+  {
+    "text": " language",
+    "startMs": 4150,
+    "endMs": 4600,
+    "timestampMs": 4375,
+    "confidence": 1
+  },
+  {
+    "text": " has",
+    "startMs": 4600,
+    "endMs": 4850,
+    "timestampMs": 4725,
+    "confidence": 1
+  },
+  {
+    "text": " a",
+    "startMs": 4850,
+    "endMs": 4950,
+    "timestampMs": 4900,
+    "confidence": 1
+  },
+  {
+    "text": " key.",
+    "startMs": 4950,
+    "endMs": 5600,
+    "timestampMs": 5275,
+    "confidence": 1
+  },
+  {
+    "text": " Let's",
+    "startMs": 6100,
+    "endMs": 6450,
+    "timestampMs": 6275,
+    "confidence": 1
+  },
+  {
+    "text": " unlock",
+    "startMs": 6450,
+    "endMs": 6900,
+    "timestampMs": 6675,
+    "confidence": 1
+  },
+  {
+    "text": " Arabic",
+    "startMs": 6900,
+    "endMs": 7400,
+    "timestampMs": 7150,
+    "confidence": 1
+  },
+  {
+    "text": " together.",
+    "startMs": 7400,
+    "endMs": 8600,
+    "timestampMs": 8000,
+    "confidence": 1
+  }
+]

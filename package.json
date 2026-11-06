@@ -1,0 +1,39 @@
+{
+  "name": "miftah-videos",
+  "version": "1.0.0",
+  "private": true,
+  "description": "3D animated videos with three.js + Remotion (captions, audio, rendering)",
+  "type": "module",
+  "scripts": {
+    "dev": "remotion studio",
+    "render": "remotion render MiftahIntro out/miftah-intro.mp4",
+    "render:vertical": "remotion render MiftahIntroVertical out/miftah-intro-vertical.mp4",
+    "still": "remotion still MiftahIntro out/thumbnail.png --frame=90",
+    "typecheck": "tsc --noEmit",
+    "upgrade": "remotion upgrade",
+    "captions": "node scripts/transcribe.mjs"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
+    "@remotion/captions": "^4.0.541",
+    "@remotion/cli": "^4.0.541",
+    "@remotion/fonts": "^4.0.541",
+    "@remotion/media": "^4.0.541",
+    "@remotion/media-utils": "^4.0.541",
+    "@remotion/three": "^4.0.541",
+    "@remotion/zod-types": "^4.0.541",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "remotion": "^4.0.541",
+    "three": "^0.187.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@remotion/install-whisper-cpp": "^4.0.541",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.187.0",
+    "typescript": "^5.9.3"
+  }
+}

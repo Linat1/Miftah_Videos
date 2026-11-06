@@ -1,0 +1,65 @@
+[
+  {
+    "text": "مَرْحَبًا",
+    "startMs": 2000,
+    "endMs": 2600,
+    "timestampMs": 2300,
+    "confidence": 1
+  },
+  {
+    "text": " بِكُمْ",
+    "startMs": 2600,
+    "endMs": 3300,
+    "timestampMs": 2950,
+    "confidence": 1
+  },
+  {
+    "text": " هٰذَا",
+    "startMs": 3800,
+    "endMs": 4200,
+    "timestampMs": 4000,
+    "confidence": 1
+  },
+  {
+    "text": " هُوَ",
+    "startMs": 4200,
+    "endMs": 4550,
+    "timestampMs": 4375,
+    "confidence": 1
+  },
+  {
+    "text": " مِفْتَاحُكُمْ",
+    "startMs": 4550,
+    "endMs": 5600,
+    "timestampMs": 5075,
+    "confidence": 1
+  },
+  {
+    "text": " إِلَى",
+    "startMs": 6100,
+    "endMs": 6450,
+    "timestampMs": 6275,
+    "confidence": 1
+  },
+  {
+    "text": " تَعَلُّمِ",
+    "startMs": 6450,
+    "endMs": 6950,
+    "timestampMs": 6700,
+    "confidence": 1
+  },
+  {
+    "text": " اللُّغَةِ",
+    "startMs": 6950,
+    "endMs": 7500,
+    "timestampMs": 7225,
+    "confidence": 1
+  },
+  {
+    "text": " الْعَرَبِيَّةِ",
+    "startMs": 7500,
+    "endMs": 8600,
+    "timestampMs": 8050,
+    "confidence": 1
+  }
+]

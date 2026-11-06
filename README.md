@@ -1,0 +1,222 @@
+# Miftah Videos — 3D animated videos with three.js + Remotion
+
+This project makes **3D animated videos in code**:
+
+| Tool | What it does here |
+|---|---|
+| **three.js** (via React Three Fiber) | The 3D scene: models, lights, camera, materials |
+| **Remotion** | The timeline: animation timing, 2D text, **captions**, **audio**, and **rendering to MP4** |
+| **@remotion/three** | Connects the two, so every 3D frame is synced to the video timeline |
+| **@remotion/captions** | Word-by-word highlighted captions (English and Arabic, right-to-left) |
+| **@remotion/media** | Music and narration audio |
+| **Whisper** (optional) | Generates captions automatically from your narration recording |
+
+A starter video is included: a golden 3D key (مِفْتَاح) with a title, captions and music, in
+**landscape 16:9** and **vertical 9:16** (Reels / Shorts / TikTok).
+
+---
+
+## 1. One-time setup on your computer
+
+You need:
+
+1. **Node.js 20 or newer**: download the LTS version from <https://nodejs.org>.
+2. This project on your computer: clone it with Git or GitHub Desktop.
+
+Then open a terminal **in the project folder** and install everything:
+
+```bash
+npm install
+```
+
+That's it. FFmpeg comes bundled with Remotion, and the browser it renders with is downloaded automatically the first time you render.
+
+---
+
+## 2. Everyday workflow
+
+### Preview and edit (Remotion Studio)
+
+```bash
+npm run dev
+```
+
+This opens the **Studio** in your browser (usually <http://localhost:3000>). There you can:
+
+- press play and scrub the timeline,
+- pick `MiftahIntro` (landscape) or `MiftahIntroVertical` (vertical) on the left,
+- change the **title, subtitle, colours, captions file and audio file** in the right-hand panel, with no code needed.
+
+When you save a code file, the preview updates instantly.
+
+### Render the final video
+
+```bash
+npm run render
+```
+
+```bash
+npm run render:vertical
+```
+
+Videos are saved in the `out/` folder. You can also click **Render** inside the Studio.
+
+### Make a thumbnail image
+
+```bash
+npm run still
+```
+
+---
+
+## 3. Adding your own audio
+
+1. Put your file (MP3, WAV, M4A…) into `public/audio/`, for example `public/audio/lesson1-narration.mp3`.
+2. In the Studio's right-hand panel, set **audioFile** to `audio/lesson1-narration.mp3`.
+3. Make the video length match the audio: change `durationInFrames` in `src/Root.tsx`
+   (seconds × 30. For example, a 45-second narration = `1350`).
+
+`public/audio/demo-music.mp3` is just a simple placeholder tone. Replace it with your own music or voice.
+
+---
+
+## 4. Captions
+
+Captions are JSON files in `public/captions/`. Each word has a start and end time in milliseconds:
+
+```json
+[
+  { "text": "Welcome", "startMs": 2000, "endMs": 2400, "timestampMs": 2200, "confidence": 1 },
+  { "text": " to",     "startMs": 2400, "endMs": 2600, "timestampMs": 2500, "confidence": 1 }
+]
+```
+
+> **Tip:** every word after the first starts with a **space** (`" to"`). That's how words get separated.
+
+Arabic is detected automatically and shown right-to-left in Noto Naskh Arabic, with full
+ḥarakāt (see `public/captions/intro-ar.json`).
+
+### Option A: generate captions automatically from your narration (recommended)
+
+```bash
+npm run captions -- public/audio/lesson1-narration.mp3
+```
+
+For an Arabic narration, add `ar`:
+
+```bash
+npm run captions -- public/audio/lesson1-narration.mp3 ar
+```
+
+This creates `public/captions/lesson1-narration.json`. Set **captionsFile** to
+`captions/lesson1-narration.json` in the Studio.
+
+- The first run downloads the free Whisper speech model (~500 MB). It runs on **your computer**, so no account or API key is needed.
+- Always **check Arabic captions**: speech recognition often drops or changes ḥarakāt. Edit the JSON text to fix any words.
+- For higher accuracy, use a bigger model (slower):
+
+  ```bash
+  WHISPER_MODEL=large-v3-turbo npm run captions -- public/audio/lesson1-narration.mp3 ar
+  ```
+
+### Option B: write them by hand
+
+Copy `public/captions/intro-en.json`, change the words and timings, and point **captionsFile** at it.
+Leave **captionsFile** empty for no captions.
+
+---
+
+## 5. How the project is organised
+
+```
+public/                 ← files used by the video (served as-is)
+  audio/                  music & narration
+  captions/               caption JSON files
+  fonts/                  Amiri, Noto Naskh Arabic, Poppins (bundled so renders work offline)
+src/
+  index.ts                entry point (don't need to touch)
+  Root.tsx                list of videos: size, length, fps, default settings
+  fonts.ts                font loading
+  compositions/
+    MiftahIntro.tsx       the video: stacks 3D scene + title + captions + audio
+  three/
+    KeyScene.tsx          the 3D scene: camera, lights, animation
+    KeyModel.tsx          the 3D key, built from simple shapes
+  captions/
+    CaptionLayer.tsx      word-by-word caption display
+scripts/
+  transcribe.mjs          narration → captions (Whisper)
+remotion.config.ts       render settings
+```
+
+---
+
+## 6. The golden rule of animating 3D in Remotion
+
+**Animate everything from the frame number.** Never use timers, `Date.now()`, `Math.random()`
+or three.js's `useFrame()` for motion: the render would come out jumpy or different each time.
+
+```tsx
+const frame = useCurrentFrame();             // 0, 1, 2, … 299
+const rotation = frame * 0.02;               // steady spin
+const opacity = interpolate(frame, [0, 30], [0, 1], { extrapolateRight: "clamp" }); // fade in over 1 second
+```
+
+Useful helpers from `remotion`: `interpolate`, `spring`, `Easing`, `<Sequence>` (to start something later).
+
+---
+
+## 7. Using your own 3D models
+
+Free models (`.glb` files) are available from sites like Sketchfab or Poly Pizza (check each model's licence).
+
+1. Put the file in `public/models/`, e.g. `public/models/lantern.glb`.
+2. Use it in a scene:
+
+```tsx
+import { useGLTF } from "@react-three/drei";
+import { staticFile } from "remotion";
+
+const Lantern = () => {
+  const { scene } = useGLTF(staticFile("models/lantern.glb"));
+  return <primitive object={scene} scale={1.5} />;
+};
+```
+
+3. Place `<Lantern />` inside the `<ThreeCanvas>` in a scene file, and animate its
+   `position` / `rotation` with `useCurrentFrame()`.
+
+`@react-three/drei` (already installed) also has handy extras: 3D text, environments, outlines, etc.
+
+---
+
+## 8. Making a new video
+
+1. Copy `src/compositions/MiftahIntro.tsx` to e.g. `src/compositions/Lesson1.tsx` and edit it.
+2. Register it in `src/Root.tsx` with another `<Composition id="Lesson1" … />`.
+3. Render it:
+
+```bash
+npx remotion render Lesson1 out/lesson1.mp4
+```
+
+---
+
+## 9. Troubleshooting
+
+| Problem | Fix |
+|---|---|
+| Render is black or shows a **"WebGL context"** error | Open `remotion.config.ts` and change `"angle"` to `"swangle"` (needed on computers/servers without a graphics card; slower but reliable). |
+| Render is slow | Normal for 3D. Preview at half size with `--scale=0.5`, then do the final render at full size. |
+| Arabic letters look disconnected or plain | Make sure the text uses one of the bundled fonts (see `src/fonts.ts`). |
+| Captions are out of sync | Check the `startMs`/`endMs` values; they're in **milliseconds** (1 second = 1000). |
+| Want the latest Remotion version | `npm run upgrade` |
+
+---
+
+## Licences
+
+- **Remotion** is free for individuals and companies with up to 3 employees; larger organisations need a
+  company licence. See <https://www.remotion.dev/license>.
+- three.js, React Three Fiber and drei are MIT-licensed.
+- The bundled fonts (Amiri, Noto Naskh Arabic, Poppins) are under the SIL Open Font Licence.
