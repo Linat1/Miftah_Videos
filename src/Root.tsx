@@ -77,7 +77,7 @@ export const RemotionRoot: React.FC = () => {
         width={1920}
         height={1080}
         schema={episodeSchema}
-        defaultProps={{ musicVolume: 0.22 }}
+        defaultProps={{ musicVolume: 0 }} // no music: voices + sound effects only
       />
     </>
   );

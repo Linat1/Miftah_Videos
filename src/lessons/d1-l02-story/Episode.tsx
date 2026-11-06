@@ -99,7 +99,7 @@ export const Episode: React.FC<z.infer<typeof episodeSchema>> = ({ musicVolume }
           </Fade>
         </Sequence>
       ))}
-      <Audio
+      {musicVolume > 0 ? <Audio
         src={staticFile("audio/lesson-music.mp3")}
         volume={(f) =>
           interpolate(f, [0, 30, durationInFrames - 60, durationInFrames], [0, musicVolume, musicVolume, 0], {
@@ -107,7 +107,7 @@ export const Episode: React.FC<z.infer<typeof episodeSchema>> = ({ musicVolume }
             extrapolateRight: "clamp",
           })
         }
-      />
+      /> : null}
     </AbsoluteFill>
   );
 };

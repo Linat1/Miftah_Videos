@@ -1,1 +1,142 @@
-{}
+{
+  "end-1": {
+    "file": "end-1.mp3",
+    "seconds": 0.99
+  },
+  "q-1": {
+    "file": "q-1.mp3",
+    "seconds": 1.25
+  },
+  "q-2": {
+    "file": "q-2.mp3",
+    "seconds": 1.99
+  },
+  "q-3": {
+    "file": "q-3.mp3",
+    "seconds": 1.25
+  },
+  "s1-01": {
+    "file": "s1-01.mp3",
+    "seconds": 1.72
+  },
+  "s1-02": {
+    "file": "s1-02.mp3",
+    "seconds": 1.23
+  },
+  "s1-03": {
+    "file": "s1-03.mp3",
+    "seconds": 2.22
+  },
+  "s1-04": {
+    "file": "s1-04.mp3",
+    "seconds": 3.5
+  },
+  "s1-05": {
+    "file": "s1-05.mp3",
+    "seconds": 2.46
+  },
+  "s2-01": {
+    "file": "s2-01.mp3",
+    "seconds": 2.04
+  },
+  "s2-02": {
+    "file": "s2-02.mp3",
+    "seconds": 2.48
+  },
+  "s2-03": {
+    "file": "s2-03.mp3",
+    "seconds": 1.52
+  },
+  "s2-04": {
+    "file": "s2-04.mp3",
+    "seconds": 2.3
+  },
+  "s2-05": {
+    "file": "s2-05.mp3",
+    "seconds": 1.67
+  },
+  "s2-06": {
+    "file": "s2-06.mp3",
+    "seconds": 3.66
+  },
+  "s2-07": {
+    "file": "s2-07.mp3",
+    "seconds": 1.49
+  },
+  "s3-01": {
+    "file": "s3-01.mp3",
+    "seconds": 2.93
+  },
+  "s3-02": {
+    "file": "s3-02.mp3",
+    "seconds": 1.41
+  },
+  "s3-03": {
+    "file": "s3-03.mp3",
+    "seconds": 2.48
+  },
+  "s3-04": {
+    "file": "s3-04.mp3",
+    "seconds": 1.96
+  },
+  "s3-05": {
+    "file": "s3-05.mp3",
+    "seconds": 3.66
+  },
+  "s3-06": {
+    "file": "s3-06.mp3",
+    "seconds": 1.72
+  },
+  "s4-01": {
+    "file": "s4-01.mp3",
+    "seconds": 1.04
+  },
+  "s4-02": {
+    "file": "s4-02.mp3",
+    "seconds": 1.72
+  },
+  "s4-03": {
+    "file": "s4-03.mp3",
+    "seconds": 4.52
+  },
+  "s4-04": {
+    "file": "s4-04.mp3",
+    "seconds": 1.54
+  },
+  "s4-05": {
+    "file": "s4-05.mp3",
+    "seconds": 3.34
+  },
+  "s4-06": {
+    "file": "s4-06.mp3",
+    "seconds": 0.76
+  },
+  "s5-01": {
+    "file": "s5-01.mp3",
+    "seconds": 2.61
+  },
+  "s5-02": {
+    "file": "s5-02.mp3",
+    "seconds": 3.5
+  },
+  "s5-03": {
+    "file": "s5-03.mp3",
+    "seconds": 3.21
+  },
+  "s5-04": {
+    "file": "s5-04.mp3",
+    "seconds": 0.76
+  },
+  "tip-1": {
+    "file": "tip-1.mp3",
+    "seconds": 3.58
+  },
+  "tip-2": {
+    "file": "tip-2.mp3",
+    "seconds": 3.87
+  },
+  "tip-3": {
+    "file": "tip-3.mp3",
+    "seconds": 5.93
+  }
+}

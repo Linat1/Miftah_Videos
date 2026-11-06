@@ -4,7 +4,7 @@
 
 **Cast:** Yusuf (a student, always late) · Maryam (his big sister) · Aisha (his classmate) · Noor (the teacher) · the waiter · a narrator (English, for the tips)
 
-**Running time:** about 2:44 (it adjusts to your recordings)
+**Running time:** about 2:33 (it adjusts to your recordings)
 
 ---
 

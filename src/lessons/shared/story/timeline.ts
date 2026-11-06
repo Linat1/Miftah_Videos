@@ -9,9 +9,13 @@ export const XFADE = 8; // segments overlap by this many frames
 /** How long a line takes: the recording if there is one, otherwise a reading-speed estimate. */
 export const lineFrames = (line: StoryLine, voices: VoiceTiming) => {
   const v = voices[line.id];
-  if (v) return Math.round(v.seconds * FPS);
   const arWords = line.ar ? line.ar.split(/\s+/).length : 0;
   const enWords = line.en.split(/\s+/).length;
+  if (v) {
+    // the recording's length, but always long enough to read the English caption
+    const readable = Math.max(1.4, 0.6 + enWords * 0.24);
+    return Math.round(Math.max(v.seconds + 0.25, readable) * FPS);
+  }
   const secs = Math.max(1.7, 0.7 + arWords * 0.55, 0.8 + enWords * 0.32);
   return Math.round(Math.min(6.5, secs) * FPS);
 };
